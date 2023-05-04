@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-from dino_runner.utils.constants import DUCKING, JUMPING, RUNNING
+from dino_runner.utils.constants import DEFAULT_TYPE, DUCKING, DUCKING_SHIELD, JUMPING, JUMPING_SHIELD, RUNNING, RUNNING_SHIELD, SHIELD_TYPE
 #DOS ESPACIOS ENTRE IMPORTS Y CLASES
 
 JUMP_VELOCITY = 8.5
@@ -9,14 +9,18 @@ DINO_JUMPING = "jumping"
 DINO_RUNNING = "running"
 DINO_DUCKING = "ducking"
 
+DUCKING_IMG = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
+JUMPING_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
+RUNNING_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
+
 class Dinosaur(Sprite): #PASCAL CASE, formato para las clases    
     POS_X = 80
     POS_Y = 310
     POS_Y_DUCK = 340
-    
-    def __init__(self):
 
-        self.update_image(RUNNING[0])
+    def __init__(self):
+        self.type = DEFAULT_TYPE
+        self.update_image(RUNNING_IMG[self.type][0])
         #self.image = RUNNING[0]
         #self.rect = self.image.get_rect()
         #self.rect.x = self.POS_X
@@ -56,7 +60,7 @@ class Dinosaur(Sprite): #PASCAL CASE, formato para las clases
 
     def jump(self):
         pos_y = self.rect.y - self.jump_velocity * 4
-        self.update_image(JUMPING, pos_y=pos_y)
+        self.update_image(JUMPING_IMG[self.type], pos_y=pos_y)
         self.jump_velocity -= 0.8
         #self.image = JUMPING
         #self.rect.y -= self.jump_velocity * 4
@@ -71,6 +75,8 @@ class Dinosaur(Sprite): #PASCAL CASE, formato para las clases
     def run(self, user_input):
         self.image = RUNNING[0] if self.step < 5 else RUNNING[1]
         self.step += 1
+        #self.update_image(RUNNING_IMG[self.type][self] if self.step < 5 else RUNNING[1]) #error
+        #self.step += 1
 
 
         #if self.jump_velocity < -8.5:
