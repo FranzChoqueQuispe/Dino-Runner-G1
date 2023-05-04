@@ -58,7 +58,7 @@ class Game:
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
-        #self.score.draw()
+        self.score.draw(self.screen)
         #self.power_up
         pygame.display.update()
         pygame.display.flip()
