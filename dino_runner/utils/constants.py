@@ -10,6 +10,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+DINO_START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+RESET = pygame.image.load(os.path.join(IMG_DIR, "Other/Reset.png"))
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -71,3 +73,4 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
+HUMMER_TYPE = "hummer"

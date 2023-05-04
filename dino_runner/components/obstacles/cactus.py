@@ -8,7 +8,7 @@ class Cactus(Obstacle):
         (LARGE_CACTUS, 300)
     ]
 
-    def __init__(self, images):
+    def __init__(self):
         images, pos_y = random.choice(self.CACTUS_TYPES)
         cactus_image = random.choice(images)
         super().__init__(cactus_image) 
